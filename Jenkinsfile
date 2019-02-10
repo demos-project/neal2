@@ -1,7 +1,8 @@
 pipeline {
     agent any
     triggers {
-        upstream 'firstjob, First-job, '
+        upstream 'firstjob'
+        downstream 'First-job'
     }
     stages {
       stage('FIRST-JOB'){
