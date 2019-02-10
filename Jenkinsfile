@@ -1,10 +1,18 @@
-node{
-  stage('FIRST-JOB'){
+pipeline {
+    agent any
+    triggers {
+        upstream 'pipeline, First-job, '
+    }
+    stages {
+      stage('FIRST-JOB'){
+        steps{
     git 'https://github.com/demos-project/neal2.git'
+        }
   }
-  stage('Second-Job'){
-  triggers {
-  upstream 'pipeline, First-job, '
-}
-  }
+        stage('Example') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
 }
