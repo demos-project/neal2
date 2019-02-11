@@ -5,7 +5,7 @@
     }
 
         stage('Example') {
-          buid 'job2'               
+          build 'job2'               
           echo 'F***'        
         }
 
