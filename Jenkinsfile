@@ -1,18 +1,13 @@
 pipeline {
     agent any
     triggers {
-        upstream 'firstjob'
-        downstream 'First-job'
+        upstream 'job1'
     }
     stages {
-      stage('FIRST-JOB'){
-        steps{
-    git 'https://github.com/demos-project/neal2.git'
-        }
-  }
         stage('Example') {
             steps {
-                echo 'Hello World'
+                properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
+                echo 'F***'
             }
         }
     }
